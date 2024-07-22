@@ -55,7 +55,7 @@ int test(size_t argc, char *argv[])
 		printf("\"test\" gets %u argument%s:\n", argc, (argc > 1)? "s" : "");
 		for (size_t i = 0; i < argc; i++)
 		{
-			printf("\t%u: \"%s\"\n", i, argv[i]);
+			printf("\t%u: \"%s\"\n", i+1, argv[i]);
 		}
 
 		return PICO_CON_COMMAND_SUCCESS;
