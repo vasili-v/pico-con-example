@@ -13,6 +13,10 @@ add_executable(pico_con_example
 	main.c
 )
 
+if(BATCH)
+	target_compile_definitions(pico_con_example PRIVATE BATCH)
+endif(BATCH)
+
 add_compile_definitions(
   $<$<CONFIG:Debug>:DEBUG>
 )

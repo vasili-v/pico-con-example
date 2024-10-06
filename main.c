@@ -8,6 +8,12 @@
 
 #define INPUT_BUFFER_SIZE 255
 
+#ifdef BATCH
+#define MODE MODE_BATCH
+#else
+#define MODE MODE_HUMAN_READABLE
+#endif
+
 static int test(size_t argc, char *argv[]);
 static int help(size_t argc, char *argv[]);
 
@@ -23,6 +29,7 @@ int main()
 
 	stdio_init_all();
 
+#ifndef BATCH
 	int n = 0;
 	while (n < 10)
 	{
@@ -32,8 +39,9 @@ int main()
 	}
 
 	printf("\n" PROG_DESC "\n");
+#endif
 
-	if (pico_con_loop(commands, INPUT_BUFFER_SIZE) == 0)
+	if (pico_con_loop(commands, INPUT_BUFFER_SIZE, MODE) == 0)
 	{
 		printf("Serial console closed.\n");
 	}
